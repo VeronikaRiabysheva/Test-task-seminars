@@ -52,6 +52,7 @@ const ModalEdit = ({
               <input
                 type="text"
                 name="title"
+                placeholder="Введите название"
                 value={editValue.title}
                 onChange={(e) =>
                   setEditValue({ ...editValue, title: e.target.value })
@@ -63,6 +64,7 @@ const ModalEdit = ({
               <input
                 type="text"
                 name="description"
+                placeholder="Добавьте описание"
                 value={editValue.description}
                 onChange={(e) =>
                   setEditValue({ ...editValue, description: e.target.value })
@@ -75,6 +77,7 @@ const ModalEdit = ({
               <input
                 type="text"
                 name="date"
+                placeholder="Укажите дату"
                 value={editValue.date}
                 onChange={(e) =>
                   setEditValue({ ...editValue, date: e.target.value })
