@@ -1,0 +1,87 @@
+:root {
+  --color-header-bg: #f8f9fa;
+  --color-header-text: #343a40;
+  --color-label: #495057;
+  --color-input-bg: #e2e2e2;
+  --color-input-border: #ced4da;
+  --color-input-focus-border: rgb(0, 55, 255);
+  --color-error: red;
+  --color-button-bg: rgb(0, 55, 255);
+  --color-button-bg-hover: rgb(90, 120, 228);
+  --padding: 1rem;
+  --border-radius: 0.3125rem;
+  --font-size-header: 1.5rem;
+  --font-size-label: 1rem;
+  --font-size-input: 0.875rem;
+  --font-size-error: 0.75rem;
+}
+
+.edit-form-header {
+  background-color: var(--color-header-bg);
+  border-radius: var(--border-radius);
+  padding: var(--padding);
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+  max-width: 31.25rem;
+  margin: auto;
+}
+
+.edit-form-header p {
+  font-size: var(--font-size-header);
+  font-weight: 600;
+  color: var(--color-header-text);
+  text-align: center;
+  margin-bottom: var(--padding);
+}
+
+.form-seminars-edit {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-seminars-edit label {
+  font-size: var(--font-size-label);
+  margin-bottom: 0.3125rem;
+  color: var(--color-label);
+}
+
+.form-seminars-edit input {
+  padding: 0.625rem;
+  border: 1px solid var(--color-input-border);
+  background-color: var(--color-input-bg);
+  color: black;
+  border-radius: var(--border-radius);
+  margin-bottom: 0.9375rem;
+  font-size: var(--font-size-input);
+  transition: border-color 0.3s;
+}
+
+.form-seminars-edit input:focus {
+  border-color: var(--color-input-focus-border);
+  outline: none;
+}
+
+.form-seminars-edit p {
+  font-size: var(--font-size-error);
+  color: var(--color-error);
+  margin: 0.3125rem 0 0.9375rem 0;
+}
+
+.btn-edit {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-edit button {
+  background-color: var(--color-button-bg);
+  color: white;
+  padding: 0.625rem 0.9375rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-label);
+  transition: background-color 0.3s;
+}
+
+.btn-edit button:hover {
+  background-color: var(--color-button-bg-hover);
+}
