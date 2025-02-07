@@ -6,8 +6,6 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"vite\"",
     "dev": "vite",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
