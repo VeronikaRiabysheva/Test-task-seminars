@@ -72,29 +72,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.notification {
-  position: fixed;
-  top: 1.25rem;
-  right: 1.25rem;
-  background-color: var(--color-notification);
-  color: white;
-  padding: var(--padding);
-  border-radius: var(--border-radius);
-  z-index: 1000;
-  transition: opacity 0.5s ease;
-}
-.notification-del {
-  position: fixed;
-  top: 1.25rem;
-  right: 1.25rem;
-  background-color: var(--color-notification-del);
-  color: white;
-  padding: var(--padding);
-  border-radius: var(--border-radius);
-  z-index: 1000;
-  transition: opacity 0.5s ease;
-}
-
 .container {
   padding: 2% 10%;
   display: flex;

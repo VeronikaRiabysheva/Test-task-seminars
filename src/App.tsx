@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import ModalDelete from "./components/ModalDelete";
 import ModalEdit from "./components/ModalEdit";
 import SeminarItem from "./components/SeminarItem";
+import Notifications from "./components/Notifications";
 
+// добавить комментарии
 function App() {
   const [seminars, setSeminars] = useState<[]>([]); // Создаем состояние для хранения семинаров
   const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false); // Состояние для хранения состояния модального окна удаления открыть/закрыть
@@ -208,10 +210,10 @@ function App() {
           errors={errors}
         ></ModalEdit>
         {/* Уведомления об изменении или удалении семинара */}
-        {notification && <div className="notification">{notification}</div>}
-        {deleteNotification && (
-          <div className="notification-del">{deleteNotification}</div>
-        )}
+        <Notifications
+          notification={notification}
+          deleteNotification={deleteNotification}
+        />
         {isLoading ? <div className="loading">Загрузка...</div> : <span></span>}
       </div>
     </div>
