@@ -4,16 +4,15 @@ import ModalEdit from "./components/ModalEdit";
 import SeminarItem from "./components/SeminarItem";
 import Notifications from "./components/Notifications";
 
-// добавить комментарии
 function App() {
-  const [seminars, setSeminars] = useState<[]>([]); // Создаем состояние для хранения семинаров
-  const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false); // Состояние для хранения состояния модального окна удаления открыть/закрыть
+  const [seminars, setSeminars] = useState<[]>([]); // для хранения семинаров
+  const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false); // для хранения состояния модального окна удаления открыто/закрыто
   const [seminarToDelete, setSeminarToDelete] = useState<string | null>(null); // состояние для хранения id семинара
-  const [isEditOpen, setIsEditOpen] = useState<boolean>(false); // хранение состояния модального окна редактирования открыть/закрыть
-  const [seminarToEdit, setSeminarToEdit] = useState<string | null>(null); //для хранения id семинара
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [notification, setNotification] = useState<string>("");
-  const [deleteNotification, SetDeleteNotification] = useState<string>("");
+  const [isEditOpen, setIsEditOpen] = useState<boolean>(false); // хранение состояния модального окна редактирования открыто/закрыто
+  const [seminarToEdit, setSeminarToEdit] = useState<string | null>(null); // хранение id семинара
+  const [isLoading, setIsLoading] = useState<boolean>(false); // хранение состояния загрузки
+  const [notification, setNotification] = useState<string>(""); //уведомление редактирования
+  const [deleteNotification, SetDeleteNotification] = useState<string>(""); // уведомление удаления
   const [editValue, setEditValue] = useState<EditValueType>({
     title: "",
     description: "",
@@ -75,7 +74,7 @@ function App() {
   };
 
   const handleSubmit = (e: any) => {
-    e.preventDefault(); // Предотвращаем перезагрузку страницы
+    e.preventDefault();
     const validationErrors = validateForm();
 
     if (Object.keys(validationErrors).length > 0) {
@@ -115,13 +114,13 @@ function App() {
     // запрос к серверу на получение данных
     setIsLoading(true);
     try {
-      const response = await fetch(URL); // получаем ответ
+      const response = await fetch(URL);
       if (!response.ok) {
         throw new Error(
           "Возникла ошибка:" + response.status + response.statusText
         );
       }
-      const data = await response.json(); // меняем на json формат
+      const data = await response.json();
       setSeminars(data); // добавляем данные в состояние seminars для хранения
     } catch (error: any) {
       console.error("Возникла ошибка", error.message);
@@ -132,6 +131,7 @@ function App() {
   };
 
   const deleteSeminar = async (id: string) => {
+    // запрос к серверу для удаления данных
     setIsLoading(true);
     try {
       const response = await fetch(`${URL}/${id}`, {
@@ -154,6 +154,7 @@ function App() {
   };
 
   const updateData = async (id: string) => {
+    // запрос к серверу на изменение данных
     setIsLoading(true);
     try {
       const response = await fetch(`${URL}/${id}`, {
@@ -184,6 +185,7 @@ function App() {
   };
 
   return (
+    // Отображение семинаров
     <div>
       <SeminarItem
         seminars={seminars}
@@ -192,15 +194,16 @@ function App() {
         setSeminarToDelete={setSeminarToDelete}
         setIsDeleteOpen={setIsDeleteOpen}
       />
+      {/* Отображение модального окна подтверждения удаления семинара */}
       <div>
         <ModalDelete
-          isDeleteOpen={isDeleteOpen} // открываем модальное окно
+          isDeleteOpen={isDeleteOpen}
           deleteSeminar={deleteSeminar}
           seminarToDelete={seminarToDelete}
           setIsDeleteOpen={setIsDeleteOpen}
-          onClose={() => setIsDeleteOpen(false)} // закрываем
+          onClose={() => setIsDeleteOpen(false)}
         ></ModalDelete>
-
+        {/* Отображение модального окна редактирования семинара */}
         <ModalEdit
           isEditOpen={isEditOpen}
           onClose={handleCloseModal}
@@ -214,6 +217,7 @@ function App() {
           notification={notification}
           deleteNotification={deleteNotification}
         />
+        {/* Добавление состояния загрузки */}
         {isLoading ? <div className="loading">Загрузка...</div> : <span></span>}
       </div>
     </div>

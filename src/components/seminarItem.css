@@ -15,6 +15,11 @@
   --transition: 0.3s;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html {
   font-size: 16px;
 }
@@ -41,10 +46,6 @@ a {
 }
 a:hover {
   color: var(--color-link-hover);
-}
-* {
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
